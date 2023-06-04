@@ -22,7 +22,6 @@ impl QueryRoot {
 		let db = ctx
 			.data::<Arc<Db>>()
 			.map_err(|err| anyhow::anyhow!("{:?}", err))?;
-		tracing::debug!("Get author with id: {:?}", id);
 
 		let author = db
 			.get_author(id)
@@ -30,6 +29,19 @@ impl QueryRoot {
 			.ok_or(anyhow::anyhow!("Author not found"))?;
 
 		Ok(author)
+	}
+
+	async fn book(&self, ctx: &Context<'_>, id: String) -> Result<Option<Book>> {
+		let db = ctx
+			.data::<Arc<Db>>()
+			.map_err(|err| anyhow::anyhow!("{:?}", err))?;
+
+		let book = db
+			.get_book(id)
+			.ok()
+			.ok_or(anyhow::anyhow!("Author not found"))?;
+
+		Ok(book)
 	}
 }
 
