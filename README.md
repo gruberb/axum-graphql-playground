@@ -1,4 +1,4 @@
-# axum-graphql-playground
+# Axum + GraphQL + RocksDB Playground
 Experimenting with axum, GraphQL and RocksDB.
 
 # Install
@@ -66,7 +66,7 @@ query {
 
 query {
   author(id: "3638fdcf-7f0e-45a7-8dbe-ca46f0280c9d") {
-		name
+    name
   }
 }
 ```
