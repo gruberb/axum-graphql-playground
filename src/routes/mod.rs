@@ -24,8 +24,8 @@ pub(crate) async fn graphql_playground() -> impl IntoResponse {
 	))
 }
 pub(crate) async fn graphql_handler(
+	Extension(schema): Extension<ServiceSchema>,
 	req: GraphQLRequest,
-	Extension(schema): Extension<ServiceSchema>, // (2)
 ) -> GraphQLResponse {
-	schema.execute(req.into_inner()).await.into() // (3)
+	schema.execute(req.into_inner()).await.into()
 }
